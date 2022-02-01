@@ -7,6 +7,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { StatsComponent } from './stats/stats.component';
 import { AlphabetComponent } from './alphabet/alphabet.component';
 import { SummaryComponent } from './summary/summary.component';
+import { DrawnWordComponent } from './drawn-word/drawn-word.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SummaryComponent } from './summary/summary.component';
     WelcomeComponent,
     StatsComponent,
     AlphabetComponent,
-    SummaryComponent
+    SummaryComponent,
+    DrawnWordComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+.drawn-word-wrapper {
+  display: flex;
+}
+
+.letter {
+  font-size: 30px;
+  margin: 0 10px;
+  padding-bottom: 20px;
+  width: 40px;
+  text-align: center;
+  border-bottom: 2px solid red;
+}
