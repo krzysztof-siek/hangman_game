@@ -1,0 +1,10 @@
+<div class="alphabet-wrapper">
+  <ul class="character-list">
+    <li *ngFor="let letter of lettersList" 
+      class="single-character" 
+      [ngClass]="{'clicked' : clickedLettesList.includes(letter)}"
+      (click)='clickedCharacterHandler(letter)'>
+      {{letter}}
+    </li>
+  </ul>
+</div>

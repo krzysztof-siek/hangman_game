@@ -1,3 +1,6 @@
 <div class="main">
-  <h3 class="title">działa</h3>
+  <app-welcome [author]="author"></app-welcome>
+  <app-stats></app-stats>
+  <app-alphabet class="wrapper" (emitLetter)="getClickedLetter($event)"></app-alphabet>
+  <app-summary></app-summary>
 </div>

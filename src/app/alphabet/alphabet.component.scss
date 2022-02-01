@@ -1,0 +1,29 @@
+
+.alphabet-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 300px;
+}
+
+.single-character {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+  background-color: yellow;
+  color: black;
+  font-size: 30px;
+  &:hover {
+    background-color: darken(yellow, 20%);
+  }
+
+  &.clicked {
+    background-color: pink;
+  }
+}
