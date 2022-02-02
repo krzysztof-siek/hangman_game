@@ -1,0 +1,25 @@
+.image {
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/hangman/empty.png');
+  background-position: center;
+  background-size: cover;
+  &.wrong1 {
+    background-image: url('/assets/hangman/1.png');
+  }
+  &.wrong2 {
+    background-image: url('/assets/hangman/2.png');
+  }
+  &.wrong3 {
+    background-image: url('/assets/hangman/3.png');
+  }
+  &.wrong4 {
+    background-image: url('/assets/hangman/4.png');
+  }
+  &.wrong5 {
+    background-image: url('/assets/hangman/5.png');
+  }
+  &.wrong6 {
+    background-image: url('/assets/hangman/6.png');
+  }
+}

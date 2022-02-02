@@ -1,8 +1,12 @@
 <div class="main">
   <app-welcome [author]="author"></app-welcome>
-  <app-stats #stats></app-stats>
-  <app-drawn-word [drawnWord]="drawnWord" [matchLetters]="matchLetters"></app-drawn-word>
-  <app-alphabet class="wrapper" (emitLetter)="getClickedLetter($event)"></app-alphabet>
-  <app-summary></app-summary>
-  <p>słowo to: {{drawnWord}}</p>
+  <div class="main-content">
+    <div class="content-wrapper">
+      <app-game-content></app-game-content>
+      <app-summary></app-summary>
+    </div>
+    <div class="image-wrapper">
+      <app-image></app-image>
+    </div>
   </div>
+</div>

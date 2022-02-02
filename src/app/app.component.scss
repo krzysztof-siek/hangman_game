@@ -9,3 +9,19 @@
 .wrapper {
   width: 100%;
 }
+
+.wrapper-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-wrapper {
+  margin-left: 50px;
+  min-width: 300px;
+}

@@ -1,0 +1,4 @@
+<app-drawn-word [drawnWord]="drawnWord" [matchLetters]="matchLetters"></app-drawn-word>
+<app-alphabet class="wrapper" (emitLetter)="getClickedLetter($event)"></app-alphabet>
+<app-stats #stats (emitWrongAnswer)="wrongAnswerHandler($event)"></app-stats>
+<p>słowo to: {{drawnWord}}</p>

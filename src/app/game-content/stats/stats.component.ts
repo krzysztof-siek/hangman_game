@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-stats',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
+  @Output() emitWrongAnswer = new EventEmitter<number>();
   wrongAnswers = 0;
 
   constructor() { }
@@ -15,6 +16,7 @@ export class StatsComponent implements OnInit {
 
   answerHandler(): void {
     this.wrongAnswers = this.wrongAnswers + 1;
+    this.emitWrongAnswer.emit(this.wrongAnswers);
   }
 
 }
