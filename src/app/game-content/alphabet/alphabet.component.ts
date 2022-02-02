@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-alphabet',
@@ -7,6 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class AlphabetComponent implements OnInit {
   @Output() emitLetter = new EventEmitter<string>();
+  @Input() status: string;
   // tslint:disable-next-line: max-line-length
   lettersList = ['a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n', 'ń', 'o', 'ó', 'p', 'q', 'r', 's', 'ś', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ż', 'ź'];
   clickedLettesList: string[] = [];
@@ -17,8 +18,10 @@ export class AlphabetComponent implements OnInit {
   }
 
   clickedCharacterHandler(letter: string): void {
-    this.clickedLettesList.push(letter);
-    this.emitLetter.emit(letter);
+    if (this.status !== 'gameOver') {
+      this.clickedLettesList.push(letter);
+      this.emitLetter.emit(letter);
+    }
   }
 
   resetClickedList(): void {

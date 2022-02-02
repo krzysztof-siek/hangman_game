@@ -10,6 +10,7 @@ import { AlphabetComponent } from './alphabet/alphabet.component';
 })
 export class GameContentComponent implements OnInit {
   @Output() showStatus = new EventEmitter<string>();
+  status: string;
   @ViewChild(StatsComponent) stats: StatsComponent;
   @ViewChild(AlphabetComponent) alphabet: AlphabetComponent;
   drawnWord: string | undefined;
@@ -35,7 +36,8 @@ getClickedLetter(letter: string): void {
       }
     });
     if (this.drawnWord.length === this.matchLetters.length) {
-      this.showStatus.emit('grats');
+      this.status = 'grats';
+      this.showStatus.emit(this.status);
       setTimeout(() => {
         this.nextWord();
       }, 3000);
@@ -51,7 +53,8 @@ getClickedLetter(letter: string): void {
 wrongAnswerHandler(wrongAnswers: number): void {
   this.letterService.setNumberOfWrongAnswers(wrongAnswers);
   if (wrongAnswers === 6) {
-    this.showStatus.emit('gameOver');
+    this.status = 'gameOver';
+    this.showStatus.emit(this.status);
   }
 }
 
@@ -63,7 +66,8 @@ nextWord(): void {
   this.matchLetters = [];
   this.clicked = [];
   this.drawWord();
-  this.showStatus.emit('');
+  this.status = '';
+  this.showStatus.emit(this.status);
 }
 
 }
