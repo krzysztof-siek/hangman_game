@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LettersService {
-  words = ['one', 'two', 'three', 'four', 'five'];
   wrongAnswers = new Subject<number>();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   setNumberOfWrongAnswers(wrongAnswers: number): void {
     this.wrongAnswers.next(wrongAnswers);
+  }
+
+  getAnswers(): Observable<any> {
+    return this.http.get('assets/answers.json');
   }
 
 }

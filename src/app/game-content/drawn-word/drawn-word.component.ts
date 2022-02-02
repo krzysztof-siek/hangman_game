@@ -16,7 +16,9 @@ export class DrawnWordComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.letters = [...this.drawnWord];
+    if (this.drawnWord){
+      this.letters = [...this.drawnWord];
+    }
   }
 
 

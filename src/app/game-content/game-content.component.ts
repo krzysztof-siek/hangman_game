@@ -10,21 +10,28 @@ import { AlphabetComponent } from './alphabet/alphabet.component';
 })
 export class GameContentComponent implements OnInit {
   @Output() showStatus = new EventEmitter<string>();
-  status: string;
   @ViewChild(StatsComponent) stats: StatsComponent;
   @ViewChild(AlphabetComponent) alphabet: AlphabetComponent;
+  status: string;
   drawnWord: string | undefined;
-  matchLetters: any[] = [];
-  clicked: any[] = [];
+  matchLetters: string[] = [];
+  clicked: string[] = [];
+  wordsList: [];
 
   constructor(private letterService: LettersService) { }
 
   ngOnInit(): void {
-    this.drawWord();
+    this.letterService.getAnswers().subscribe((res) => {
+      this.wordsList = res.words;
+      this.drawWord();
+    });
   }
 
+
   drawWord(): void {
-    this.drawnWord = this.letterService.words[Math.floor(Math.random() * this.letterService.words.length)];
+    const index = Math.floor(Math.random() * this.wordsList?.length);
+    this.drawnWord = this.wordsList[index];
+    this.wordsList.splice(index, 1);
   }
 
 getClickedLetter(letter: string): void {
