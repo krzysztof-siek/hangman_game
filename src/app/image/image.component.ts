@@ -14,7 +14,6 @@ export class ImageComponent implements OnInit {
   ngOnInit(): void {
     this.letterService.wrongAnswers.subscribe((res) => {
       this.wrongAnswer = `wrong${res}`;
-      console.log(this.wrongAnswer);
     });
   }
 

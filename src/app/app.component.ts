@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LettersService } from './services/letters.service';
+import { GameContentComponent } from './game-content/game-content.component';
+
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,10 @@ import { LettersService } from './services/letters.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent  {
-
+  @ViewChild(GameContentComponent) content: GameContentComponent;
   title = 'handmanGame';
   author = 'Krzysztof Siek';
+  status: string | undefined;
 
 
   constructor() {}

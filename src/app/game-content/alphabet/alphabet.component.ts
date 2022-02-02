@@ -21,4 +21,8 @@ export class AlphabetComponent implements OnInit {
     this.emitLetter.emit(letter);
   }
 
+  resetClickedList(): void {
+    this.clickedLettesList = [];
+  }
+
 }

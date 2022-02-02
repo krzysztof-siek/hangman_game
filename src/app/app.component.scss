@@ -25,3 +25,23 @@
   margin-left: 50px;
   min-width: 300px;
 }
+
+.success, .danger {
+  color: green;
+  font-size: 30px;
+  font-weight: 700;
+  &.danger {
+    color: red;
+  }
+  .new-game {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: .3s;
+    cursor: pointer;
+    &:hover {
+      background-color: darken(red, 20%);
+    }
+  }
+}

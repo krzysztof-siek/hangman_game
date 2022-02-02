@@ -8,6 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class StatsComponent implements OnInit {
   @Output() emitWrongAnswer = new EventEmitter<number>();
   wrongAnswers = 0;
+  resolved = 0;
 
   constructor() { }
 
@@ -17,6 +18,10 @@ export class StatsComponent implements OnInit {
   answerHandler(): void {
     this.wrongAnswers = this.wrongAnswers + 1;
     this.emitWrongAnswer.emit(this.wrongAnswers);
+  }
+
+  resolvedHandler(): void {
+    this.resolved = this.resolved + 1;
   }
 
 }

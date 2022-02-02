@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { StatsComponent } from './stats/stats.component';
 import { LettersService } from '../services/letters.service';
+import { AlphabetComponent } from './alphabet/alphabet.component';
 
 @Component({
   selector: 'app-game-content',
@@ -8,7 +9,9 @@ import { LettersService } from '../services/letters.service';
   styleUrls: ['./game-content.component.scss']
 })
 export class GameContentComponent implements OnInit {
+  @Output() showStatus = new EventEmitter<string>();
   @ViewChild(StatsComponent) stats: StatsComponent;
+  @ViewChild(AlphabetComponent) alphabet: AlphabetComponent;
   drawnWord: string | undefined;
   matchLetters: any[] = [];
   clicked: any[] = [];
@@ -16,12 +19,27 @@ export class GameContentComponent implements OnInit {
   constructor(private letterService: LettersService) { }
 
   ngOnInit(): void {
+    this.drawWord();
+  }
+
+  drawWord(): void {
     this.drawnWord = this.letterService.words[Math.floor(Math.random() * this.letterService.words.length)];
-}
+  }
 
 getClickedLetter(letter: string): void {
   if (this.drawnWord?.includes(letter)) {
-    this.matchLetters.push(letter);
+    const separateLetters = [...this.drawnWord];
+    separateLetters.map(el => {
+      if (el === letter) {
+        this.matchLetters.push(letter);
+      }
+    });
+    if (this.drawnWord.length === this.matchLetters.length) {
+      this.showStatus.emit('grats');
+      setTimeout(() => {
+        this.nextWord();
+      }, 3000);
+    }
   } else {
     if (!this.clicked.includes(letter)){
       this.stats.answerHandler();
@@ -32,6 +50,20 @@ getClickedLetter(letter: string): void {
 
 wrongAnswerHandler(wrongAnswers: number): void {
   this.letterService.setNumberOfWrongAnswers(wrongAnswers);
+  if (wrongAnswers === 6) {
+    this.showStatus.emit('gameOver');
+  }
+}
+
+nextWord(): void {
+  this.stats.resolvedHandler();
+  this.letterService.setNumberOfWrongAnswers(0);
+  this.alphabet.resetClickedList();
+  this.stats.wrongAnswers = 0;
+  this.matchLetters = [];
+  this.clicked = [];
+  this.drawWord();
+  this.showStatus.emit('');
 }
 
 }
