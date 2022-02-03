@@ -10,6 +10,7 @@ export class SuccessModalComponent implements OnInit {
   showModal = false;
   content: any;
   title: any;
+  timeSpent: number[];
 
   constructor(private letterService: LettersService) { }
 
@@ -20,6 +21,8 @@ export class SuccessModalComponent implements OnInit {
     this.showModal = true;
     this.content = 'Przeszedłeś wszystkie etapy gry :)';
     this.title = 'Gratulacje! Udało Ci się!';
+    this.timeSpent = this.letterService.getTime();
+    console.log(this.timeSpent);
   }
 
   hide(): void {

@@ -9,6 +9,7 @@
 
       <div class="modal-body">
         {{ content }}
+        <p>W grze spędziłeś łącznie : <span *ngIf="timeSpent">{{ timeSpent[0] > 0 ? timeSpent[0] + 'minut' : '' }} {{timeSpent[1]}}sekund</span>  </p>
       </div>
       
       <div class="modal-footer">

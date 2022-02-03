@@ -29,6 +29,7 @@ export class GameContentComponent implements OnInit {
       this.resetData();
       this.resolved = 0;
     });
+    this.letterService.timer();
   }
 
   getWordsList(): void {
