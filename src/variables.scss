@@ -9,3 +9,15 @@ $my-white: rgb(250, 248, 248);
     background-color: darken($color, 20%);
   }
 }
+
+
+
+@mixin tablet {
+  @media (min-width: 568px) { @content; }
+}
+@mixin laptop {
+  @media (min-width: 992px) { @content; }
+}
+@mixin desktop {
+  @media (min-width: 1200px) { @content; }
+}

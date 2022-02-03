@@ -2,7 +2,7 @@
   <app-drawn-word [drawnWord]="drawnWord" [matchLetters]="matchLetters"></app-drawn-word>
   <app-alphabet (emitLetter)="getClickedLetter($event)" [status]="status" #alphabet></app-alphabet>
   <app-stats class="stats" [wrongAnswers]="wrongAnswers" [resolved]="resolved" ></app-stats>
-  <p>słowo to: {{drawnWord}}</p>
+  <p class="tip">słowo to: {{drawnWord}}</p>
 </div>
 <app-success-modal #successModal></app-success-modal>
 

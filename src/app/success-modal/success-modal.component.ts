@@ -22,7 +22,6 @@ export class SuccessModalComponent implements OnInit {
     this.content = 'Przeszedłeś wszystkie etapy gry :)';
     this.title = 'Gratulacje! Udało Ci się!';
     this.timeSpent = this.letterService.getTime();
-    console.log(this.timeSpent);
   }
 
   hide(): void {

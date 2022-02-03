@@ -21,6 +21,4 @@ export class DrawnWordComponent implements OnInit, OnChanges {
     }
   }
 
-
-
 }

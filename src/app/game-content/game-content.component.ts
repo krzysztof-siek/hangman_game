@@ -95,7 +95,6 @@ export class GameContentComponent implements OnInit {
     } else {
       this.modal.show();
     }
-
   }
 
   resetData(): void {
@@ -108,6 +107,5 @@ export class GameContentComponent implements OnInit {
     this.status = '';
     this.showStatus.emit(this.status);
   }
-
 
 }
