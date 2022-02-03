@@ -1,0 +1,15 @@
+@import '../../../variables.scss';
+
+.stats-wrapper {
+  width: 100%;
+  p {
+    color: $my-green;
+    font-size: 20px;
+    font-weight: 700;
+    &.danger {
+      span  {
+        color: $my-red;
+      }
+    }
+  }
+}

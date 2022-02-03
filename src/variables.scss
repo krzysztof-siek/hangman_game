@@ -1,0 +1,11 @@
+$my-green: #51A567;
+$my-red: rgb(240, 25, 25);
+$my-white: rgb(250, 248, 248);
+
+
+
+@mixin darkenBackground($color) {
+  &:hover {
+    background-color: darken($color, 20%);
+  }
+}

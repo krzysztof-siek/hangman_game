@@ -1,5 +1,6 @@
 <div class="stats-wrapper">
-  <p>Złe odpowiedzi: {{wrongAnswers}}</p>
+  <p>Kategoria: angielskie liczby :) </p>
+  <p [ngClass]="{'danger' : wrongAnswers > 4}">Liczba błędów: <span>{{wrongAnswers}}</span></p>
   <p>Rozwiązano: {{resolved}}</p>
 </div>
 

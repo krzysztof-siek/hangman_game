@@ -1,3 +1,4 @@
+@import '../../../variables.scss';
 
 .alphabet-wrapper {
   display: flex;
@@ -7,23 +8,37 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 300px;
+  margin: 50px 0;
+  padding: 0;
 }
 
 .single-character {
+  margin: 5px;
   height: 40px;
   width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
-  background-color: yellow;
-  color: black;
-  font-size: 30px;
-  &:hover {
-    background-color: darken(yellow, 20%);
-  }
+  border: 1px solid white;
+  background-color: $my-green;
+  border-radius: 50%;
+  transition: .3s;
+  cursor: pointer;
+  @include darkenBackground($my-green);
+ 
 
   &.clicked {
-    background-color: pink;
+    cursor: default;
+    opacity: .3;
+    &:hover {
+      background-color: $my-green;
+    }
+  }
+
+  .letter {
+    color: $my-white;
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 700;
   }
 }

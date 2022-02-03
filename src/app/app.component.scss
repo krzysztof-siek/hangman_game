@@ -1,4 +1,6 @@
-.main {
+@import '../variables.scss';
+
+.app-wrapper {
   height: 100vh;
   display: flex;
   justify-content: flex-start;
@@ -6,42 +8,33 @@
   flex-direction: column;
 }
 
-.wrapper {
-  width: 100%;
-}
-
-.wrapper-all {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .main-content {
   display: flex;
   flex-direction: row;
+  width: 60%;
+  justify-content: space-around;
 }
 
-.image-wrapper {
-  margin-left: 50px;
-  min-width: 300px;
+.feedback-wrapper {
+  margin-top: 50px;
 }
 
 .success, .danger {
-  color: green;
+  color: $my-green;
   font-size: 30px;
   font-weight: 700;
   &.danger {
-    color: red;
+    color: $my-red;
   }
   .new-game {
-    background-color: red;
-    color: white;
+    background-color: $my-red;
+    color: $my-white;
     padding: 10px 20px;
     border-radius: 20px;
     transition: .3s;
     cursor: pointer;
     &:hover {
-      background-color: darken(red, 20%);
+      background-color: darken($my-red, 20%);
     }
   }
 }

@@ -4,7 +4,7 @@
       class="single-character" 
       [ngClass]="{'clicked' : clickedLettesList.includes(letter)}"
       (click)='clickedLetterHandler(letter)'>
-      {{letter}}
+      <span class="letter">{{letter}}</span>
     </li>
   </ul>
 </div>

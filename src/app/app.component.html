@@ -1,13 +1,11 @@
-<div class="main">
+<div class="app-wrapper">
   <app-welcome></app-welcome>
   <div class="main-content">
-    <div class="content-wrapper">
-      <app-game-content (showStatus)='status = $event' #gameContent></app-game-content>
-    </div>
-    <div class="image-wrapper">
-      <app-image></app-image>
-    </div>
+    <app-game-content (showStatus)='status = $event' #gameContent></app-game-content>
+    <app-image></app-image>
   </div>
-  <p class="success" *ngIf="status === 'grats'">Gratulacje, udało Ci się odgadnąć słowo! :) </p>
-  <p class="danger" *ngIf="status === 'gameOver'" >Game Over - <span class="new-game" (click)='content.resetData()'>Zacznij od nowa</span> </p>
+  <div class="feedback-wrapper">
+    <p class="success" *ngIf="status === 'grats'">Gratulacje, udało Ci się odgadnąć słowo! :) </p>
+    <p class="danger" *ngIf="status === 'gameOver'" >Game Over - <span class="new-game" (click)='content.resetData()'>Zacznij od nowa</span> </p>
+  </div>
 </div>

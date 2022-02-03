@@ -1,12 +1,17 @@
-.drawn-word-wrapper {
+@import "../../../variables.scss";
+
+.word-wrapper {
   display: flex;
+  min-height: 70px;
 }
 
 .letter {
+  color: $my-green;
   font-size: 30px;
   margin: 0 10px;
   padding-bottom: 20px;
   width: 40px;
   text-align: center;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid $my-green;
+  text-transform: capitalize;
 }
