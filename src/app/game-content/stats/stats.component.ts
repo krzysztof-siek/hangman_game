@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { SuccessModalComponent } from '../../success-modal/success-modal.component';
 
 @Component({
   selector: 'app-stats',
@@ -6,6 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
+  @ViewChild(SuccessModalComponent) modal: SuccessModalComponent;
   @Output() emitWrongAnswer = new EventEmitter<number>();
   wrongAnswers = 0;
   resolved = 0;
@@ -21,7 +23,11 @@ export class StatsComponent implements OnInit {
   }
 
   resolvedHandler(): void {
-    this.resolved = this.resolved + 1;
+    this.modal.show();
+    if (this.resolved === 5) {
+    } else {
+      this.resolved = this.resolved + 1;
+    }
   }
 
 }

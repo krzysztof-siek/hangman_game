@@ -11,6 +11,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { DrawnWordComponent } from './game-content/drawn-word/drawn-word.component';
 import { ImageComponent } from './image/image.component';
 import { GameContentComponent } from './game-content/game-content.component';
+import { SuccessModalComponent } from './success-modal/success-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { GameContentComponent } from './game-content/game-content.component';
     SummaryComponent,
     DrawnWordComponent,
     ImageComponent,
-    GameContentComponent
+    GameContentComponent,
+    SuccessModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GameContentComponent } from './game-content/game-content.component';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,6 +18,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 
 
 }

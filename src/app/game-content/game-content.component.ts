@@ -3,6 +3,7 @@ import { StatsComponent } from './stats/stats.component';
 import { LettersService } from '../services/letters.service';
 import { AlphabetComponent } from './alphabet/alphabet.component';
 
+
 @Component({
   selector: 'app-game-content',
   templateUrl: './game-content.component.html',
