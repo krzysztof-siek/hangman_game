@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LettersService } from '../services/letters.service';
 
 @Component({
   selector: 'app-success-modal',
@@ -10,7 +11,7 @@ export class SuccessModalComponent implements OnInit {
   content: any;
   title: any;
 
-  constructor() { }
+  constructor(private letterService: LettersService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,7 @@ export class SuccessModalComponent implements OnInit {
 
   hide(): void {
     this.showModal = false;
+    this.letterService.resetGameEmit();
   }
 
 

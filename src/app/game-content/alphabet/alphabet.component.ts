@@ -17,7 +17,7 @@ export class AlphabetComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  clickedCharacterHandler(letter: string): void {
+  clickedLetterHandler(letter: string): void {
     if (this.status !== 'gameOver') {
       this.clickedLettesList.push(letter);
       this.emitLetter.emit(letter);

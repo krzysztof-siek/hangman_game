@@ -1,14 +1,13 @@
 <div class="main">
-  <app-welcome [author]="author"></app-welcome>
+  <app-welcome></app-welcome>
   <div class="main-content">
     <div class="content-wrapper">
       <app-game-content (showStatus)='status = $event' #gameContent></app-game-content>
-      <app-summary></app-summary>
     </div>
     <div class="image-wrapper">
       <app-image></app-image>
     </div>
   </div>
   <p class="success" *ngIf="status === 'grats'">Gratulacje, udało Ci się odgadnąć słowo! :) </p>
-  <p class="danger" *ngIf="status === 'gameOver'" >Game Over - <span class="new-game" (click)='content.nextWord()'>Zacznij od nowa</span> </p>
+  <p class="danger" *ngIf="status === 'gameOver'" >Game Over - <span class="new-game" (click)='content.resetData()'>Zacznij od nowa</span> </p>
 </div>

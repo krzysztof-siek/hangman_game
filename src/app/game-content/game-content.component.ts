@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { StatsComponent } from './stats/stats.component';
 import { LettersService } from '../services/letters.service';
 import { AlphabetComponent } from './alphabet/alphabet.component';
+import { SuccessModalComponent } from '../success-modal/success-modal.component';
 
 
 @Component({
@@ -11,23 +11,32 @@ import { AlphabetComponent } from './alphabet/alphabet.component';
 })
 export class GameContentComponent implements OnInit {
   @Output() showStatus = new EventEmitter<string>();
-  @ViewChild(StatsComponent) stats: StatsComponent;
   @ViewChild(AlphabetComponent) alphabet: AlphabetComponent;
+  @ViewChild(SuccessModalComponent) modal: SuccessModalComponent;
   status: string;
-  drawnWord: string | undefined;
+  drawnWord: string;
   matchLetters: string[] = [];
   clicked: string[] = [];
   wordsList: [];
+  wrongAnswers = 0;
+  resolved = 0;
 
-  constructor(private letterService: LettersService) { }
+  constructor(private letterService: LettersService) {}
 
   ngOnInit(): void {
+    this.getWordsList();
+    this.letterService.resetGame.subscribe(() => {
+      this.resetData();
+      this.resolved = 0;
+    });
+  }
+
+  getWordsList(): void {
     this.letterService.getAnswers().subscribe((res) => {
       this.wordsList = res.words;
       this.drawWord();
     });
   }
-
 
   drawWord(): void {
     const index = Math.floor(Math.random() * this.wordsList?.length);
@@ -35,47 +44,69 @@ export class GameContentComponent implements OnInit {
     this.wordsList.splice(index, 1);
   }
 
-getClickedLetter(letter: string): void {
-  if (this.drawnWord?.includes(letter)) {
+  getClickedLetter(letter: string): void {
+    this.checkIfCorrectLetter(letter);
+    this.clicked.push(letter);
+  }
+
+  checkIfCorrectLetter(letter: string): void {
+    if ((this.drawnWord.includes(letter))) {
+      this.isCorrectLetterHandler(letter);
+    } else {
+      if (!this.clicked.includes(letter)) {
+        this.isWrongLetterHandler(this.wrongAnswers);
+      }
+    }
+  }
+
+  isCorrectLetterHandler(letter: string): void {
     const separateLetters = [...this.drawnWord];
     separateLetters.map(el => {
-      if (el === letter) {
-        this.matchLetters.push(letter);
-      }
-    });
+        if (el === letter) {
+          this.matchLetters.push(letter);
+        }
+      });
     if (this.drawnWord.length === this.matchLetters.length) {
+      if (this.resolved !== 5) {
+        this.setNextWord();
+      }
+    }
+  }
+
+  isWrongLetterHandler(wrongAnswers: number): void {
+    const updatedValue = this.wrongAnswers + 1;
+    this.wrongAnswers = updatedValue;
+    this.letterService.setNumberOfWrongAnswers(updatedValue);
+    if (updatedValue === 6) {
+      this.status = 'gameOver';
+      this.showStatus.emit(this.status);
+    }
+  }
+
+  setNextWord(): void {
+    this.resolved = this.resolved + 1;
+    if (this.resolved < 5) {
       this.status = 'grats';
       this.showStatus.emit(this.status);
       setTimeout(() => {
-        this.nextWord();
-      }, 3000);
+        this.resetData();
+      }, 1000);
+    } else {
+      this.modal.show();
     }
-  } else {
-    if (!this.clicked.includes(letter)){
-      this.stats.answerHandler();
-    }
-  }
-  this.clicked.push(letter);
-}
 
-wrongAnswerHandler(wrongAnswers: number): void {
-  this.letterService.setNumberOfWrongAnswers(wrongAnswers);
-  if (wrongAnswers === 6) {
-    this.status = 'gameOver';
+  }
+
+  resetData(): void {
+    this.letterService.setNumberOfWrongAnswers(0);
+    this.alphabet.resetClickedList();
+    this.wrongAnswers = 0;
+    this.matchLetters = [];
+    this.clicked = [];
+    this.drawWord();
+    this.status = '';
     this.showStatus.emit(this.status);
   }
-}
 
-nextWord(): void {
-  this.stats.resolvedHandler();
-  this.letterService.setNumberOfWrongAnswers(0);
-  this.alphabet.resetClickedList();
-  this.stats.wrongAnswers = 0;
-  this.matchLetters = [];
-  this.clicked = [];
-  this.drawWord();
-  this.status = '';
-  this.showStatus.emit(this.status);
-}
 
 }

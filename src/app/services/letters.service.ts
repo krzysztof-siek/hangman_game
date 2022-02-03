@@ -7,11 +7,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LettersService {
   wrongAnswers = new Subject<number>();
+  resetGame = new Subject<void>();
 
   constructor(private http: HttpClient) { }
 
   setNumberOfWrongAnswers(wrongAnswers: number): void {
     this.wrongAnswers.next(wrongAnswers);
+  }
+
+  resetGameEmit(): void {
+    this.resetGame.next();
   }
 
   getAnswers(): Observable<any> {

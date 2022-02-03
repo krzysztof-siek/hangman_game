@@ -9,7 +9,7 @@ import { GameContentComponent } from './game-content/game-content.component';
 })
 export class AppComponent implements OnInit {
   @ViewChild(GameContentComponent) content: GameContentComponent;
-  title = 'handmanGame';
+  title = 'hangmanGame';
   author = 'Krzysztof Siek';
   status: string | undefined;
 

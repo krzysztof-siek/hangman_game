@@ -3,7 +3,7 @@
     <li *ngFor="let letter of lettersList" 
       class="single-character" 
       [ngClass]="{'clicked' : clickedLettesList.includes(letter)}"
-      (click)='clickedCharacterHandler(letter)'>
+      (click)='clickedLetterHandler(letter)'>
       {{letter}}
     </li>
   </ul>
