@@ -1,9 +1,14 @@
+@import "../../variables.scss";
+
 .content-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  @include tablet {
+    min-width: 500px;
+  }
 }
 
 .stats {

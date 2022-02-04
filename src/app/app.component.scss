@@ -15,7 +15,7 @@
   width: 100%;
   justify-content: space-around;
 
-  @include desktop {
+  @include laptop {
     width: 60%;
     flex-direction: row;
   }
