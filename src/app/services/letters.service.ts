@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { InteropObservable, Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class LettersService {
   resetGame = new Subject<void>();
   interval: any;
   time = 0;
-  display: any;
+  display: string;
 
   constructor(private http: HttpClient) { }
 

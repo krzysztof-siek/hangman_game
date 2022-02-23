@@ -8,8 +8,8 @@ import { LettersService } from '../services/letters.service';
 })
 export class SuccessModalComponent implements OnInit {
   showModal = false;
-  content: any;
-  title: any;
+  content: string;
+  title: string;
   timeSpent: number[];
 
   constructor(private letterService: LettersService) { }

@@ -6,8 +6,8 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
   styleUrls: ['./drawn-word.component.scss']
 })
 export class DrawnWordComponent implements OnInit, OnChanges {
-  @Input() drawnWord: any;
-  @Input() matchLetters: any[];
+  @Input() drawnWord: string;
+  @Input() matchLetters: string[];
   letters: any;
 
   constructor() { }
